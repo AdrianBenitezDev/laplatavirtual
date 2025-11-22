@@ -64,7 +64,7 @@
       background: rgba(255,255,255,0.9);
       backdrop-filter: blur(4px);
       border-bottom: 1px solid rgba(0,0,0,0.04);
-      z-index:40;
+      z-index:200;
     }
     .brand{
       display:flex;
@@ -86,6 +86,7 @@
       align-items:center;
       justify-content:center;
       flex:1;
+      z-index: 200;
     }
     nav.main-nav a{
       text-decoration:none;
@@ -105,8 +106,15 @@
     /* Spacer under fixed header */
     .top-spacer{ height: var(--header-height); }
 
+
+
+
+
+
+
     /* Video hero that fills the remaining viewport below header */
     .hero-wrap{
+      
       width:100%;
       height: calc(100vh - var(--header-height));
       overflow:hidden;
@@ -117,8 +125,10 @@
     }
     .hero-wrap video, .hero-wrap .hero-placeholder{
       width:100%;
-      height:100%;
-      object-fit:cover;
+      height:120%;
+        object-fit: cover;    /* mantiene ratio y rellena el contenedor recortando */
+  object-position: center center; /* puedes cambiar a 'top' o 'center 20%' */
+   
       display:block;
     }
     .hero-overlay{
@@ -135,7 +145,7 @@
       max-width:1200px;
       margin: 20px auto;
       padding: 8px;
-      z-index:10;
+      z-index:200;
     }
 
     .section-card{    display: flex;
@@ -144,7 +154,7 @@
     margin: 10px;
     border-radius: var(--card-radius);
     box-shadow: var(--card-shadow);
-    padding: 18px;
+    /* padding: 18px; */
     overflow: hidden;
     justify-content: space-evenly;
     align-items: center;
@@ -166,22 +176,46 @@
     /* Plans */
     .plans-grid{
       
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    transform: translate(-50%, -80%);
     padding: 20px;
     width: 100%;
     display: flex;
     gap: 16px;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: space-around;
+    justify-content: space-around;
     }
-    .plan{
-      width: 40%;
+
+    .pNosotros{
+      font-size: 24px;
+    }
+
+    .divNosotros{
+      position: absolute;
+    width: auto;
+    
+    margin: 10px;
     padding:16px;
     border-radius: 10px;
-    background: #cbdbf2;
+    background: #cbdbf2a6;
     display: flex;
     flex-direction: column;
     gap: 12px;
+    }
+    .plan{
+    width: 40%;
+    padding: 16px;
+    border-radius: 10px;
+    background: #cbdbf2a6;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-content: space-between;
+    justify-content: space-between;
     }
 
     .btnVerMasInfo{ 
@@ -204,6 +238,7 @@
       font-weight:600;
     }
     .btn-gray{
+      margin-top: 10px;
       background:#e6e9ee;
       color:#222;
       box-shadow: 0 3px 8px rgba(0,0,0,0.06);
@@ -219,9 +254,19 @@
 
     /* Contact form */
     form.contact-form{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
+      
+
+    transform: translateY(-10%);
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    border-radius: 10px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    background: #8e8fada8;
+
     }
     form.contact-form .full{ grid-column:1 / -1 }
     label{ display:block; font-size:0.9rem; margin-bottom:6px; color:var(--muted) }
@@ -290,6 +335,32 @@
     .imgPage{
         width: 90%;
     }
+    .imgPage2{
+      width: auto;
+    height: 100%;
+    z-index: 0;
+    }
+
+    .section-card {
+  position: relative; 
+}
+
+.section-card .imgPage {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.section-card .column {
+  position: absolute;
+  top: 15%;           /* lo centra vertical */
+  left: 50%;          /* lo centra horizontal */
+  transform: translate(-50%, -50%); /* centra exacto */
+  z-index: 100;
+  text-align: center;
+  color: white;       /* por si la imagen es oscura */
+}
+
 
   </style>
 </head>
@@ -349,34 +420,32 @@
   <main>
     <!-- Sección Planes -->
     <section id="planes" class="section-card" aria-labelledby="planes-title">
+
+      <img class="imgPage" src="./img1.png" alt="imagen familia viendo algo en internet">
   
       <div class="column">
-            <img width="45" height="45" src="./logo2.png" class="attachment-full size-full" alt="" decoding="async">
+            <img width="90" height="90" src="./logo2.png" class="attachment-full size-full" alt="" decoding="async">
     <h2 id="planes-title">Planes</h2>
-       <img class="imgPage" src="./img1.png" alt="imagen familia viendo algo en internet">
+       
 </div>
 
       <div class="plans-grid">
+
+<!-- plan 1 servicio de internet      -->
+
         <div class="plan">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div>
               <strong>Internet Satelital</strong>
               <div style="font-size:12px;color:var(--muted)">Ideal para familias pequeñas</div>
+              <div style="font-weight:800;font-size:1.1rem">$16.500/ mes</div>
             </div>
             
           </div>
            <div style="text-align:left">
-              <div style="font-weight:800;font-size:1.1rem">$16.500/ mes</div>
+              <!-- <div style="font-weight:800;font-size:1.1rem">$16.500/ mes</div> -->
             </div>
 
-          <!-- <div class="images-row" aria-hidden="true">
-            <img src="img-plan1-1.jpg" alt="imagen plan 1">
-            <img src="img-plan1-2.jpg" alt="imagen plan 1">
-            <img src="img-plan1-3.jpg" alt="imagen plan 1">
-          </div> -->
-
-     
-<!-- tarjetas -->
           <div style="margin-top:8px">
 
  <div id="details-plan2" class="plan-details" role="region" >
@@ -390,7 +459,7 @@
            <a class="btn btn-gray toggle-details row" 
   data-target="details-plan1" 
   aria-expanded="false"
-  href="https://wa.me/549XXXXXXXXXX" 
+    href='https://wa.me/5491172329570/?text=Hola,%20me%20interesa%20contratar%20el%20servicio%20de%20Internet%20Satelital!'
   target="_blank"
   style="
       text-decoration: none; 
@@ -409,35 +478,76 @@
     <span>Contratar Servicio</span>
 </a>
 
+          </div>
+        </div>
+
+        
+<!-- plan 2 servicio streaming      -->
+
+        <div class="plan">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <strong>Servicio de Streaming</strong>
+              <div style="font-size:12px;color:var(--muted)">Dizfruta de las mejores Películas</div>
+               <div style="font-weight:800;font-size:1.1rem">$5000/ mes</div>
+            </div>
+           
+          </div>
+           <div style="text-align:left">
+              <!-- <div style="font-weight:800;font-size:1.1rem">$5000/ mes</div> -->
+            </div>
+
+          <div style="margin-top:8px">
+
+            <div id="details-plan2" class="plan-details" role="region" >
+              <ul style="margin:0 0 0 18px;padding:0">
+                <li>1. Descargas la app de playstore</li>
+                <li>2. Te proporcionamos el usuario y contraseña</li>
+                <li>3. Listo! Disfrutas de las mejores Series y Películas!</li>
+              </ul>
+            </div>
+<a class="btn btn-gray toggle-details row" 
+  data-target="details-plan1" 
+  aria-expanded="false"
+  href='https://wa.me/5491172329570/?text=Hola,%20me%20interesa%20contratar%20el%20servicio%20de%20streaming!'
+  target="_blank"
+  style="
+      text-decoration: none; 
+      display: flex; 
+      flex-direction: row;
+      align-items: center; 
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 10px 14px;
+  ">
+    
+    <img width="32" height="32" src="https://img.icons8.com/windows/32/whatsapp--v1.png" alt="whatsapp--v1"/>
+    <span>Contratar Servicio</span>
+</a>
 
 
 
           </div>
         </div>
 
+        
+<!-- plan 3  internet + servicio de streaming    -->
+
         <div class="plan">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <div>
               <strong>Internet Satelital + Servicio de Streaming</strong>
               <div style="font-size:12px;color:var(--muted)">Dizfruta de las mejores Películas</div>
+               <div style="font-weight:800;font-size:1.1rem">$21.500/ mes</div>
             </div>
            
           </div>
            <div style="text-align:left">
-              <div style="font-weight:800;font-size:1.1rem">$21.500/ mes</div>
+              <!-- <div style="font-weight:800;font-size:1.1rem">$21.500/ mes</div> -->
             </div>
 
-          <!-- <div class="images-row" aria-hidden="true">
-            <img src="img-plan2-1.jpg" alt="imagen plan 2">
-            <img src="img-plan2-2.jpg" alt="imagen plan 2">
-            <img src="img-plan2-3.jpg" alt="imagen plan 2">
-          </div> -->
-
           <div style="margin-top:8px">
-          
-            
-
-
 
             <div id="details-plan2" class="plan-details" role="region" >
               <ul style="margin:0 0 0 18px;padding:0">
@@ -449,7 +559,7 @@
 <a class="btn btn-gray toggle-details row" 
   data-target="details-plan1" 
   aria-expanded="false"
-  href="https://wa.me/549XXXXXXXXXX" 
+  href='https://wa.me/5491172329570/?text=Hola,%20me%20interesa%20contratar%20el%20servicio%20de%20Internet%20satelital%20y%20el%20servicio%20de%20streaming!'
   target="_blank"
   style="
       text-decoration: none; 
@@ -458,8 +568,6 @@
       align-items: center; 
       justify-content: center;
       gap: 10px;
-
-      /* 🔥 Esto asegura el mismo alto */
       min-height: 48px;
       padding: 10px 14px;
   ">
@@ -480,25 +588,23 @@
     <section id="nosotros" class="section-card" aria-labelledby="nosotros-title">
 
         <div class="column">
-            <img width="45" height="45" src="./logo2.png" class="attachment-full size-full" alt="" decoding="async">
+            <img width="90" height="90" src="./logo2.png" class="attachment-full size-full" alt="" decoding="async">
             <h2 id="nosotros-title">Nosotros</h2>
-             <img class="imgPage" src="./img2.png" alt="imagen de conexiones dentro de un servidor">
-</div>
+            
+      </div>
+       <img class="imgPage2" src="./img2.png" alt="imagen de conexiones dentro de un servidor">
       
-<br>
-  
-<br>
-      <p style="color:var(--muted); margin-top:0">
+<div class="divNosotros">
+    <p class="pNosotros">
         Somos una empresa local dedicada a brindar conectividad estable y soporte cercano. Atención personalizada en todas nuestras zonas.
       </p>
-      <p style="color:var(--muted); margin-top:0">
+      <p class="pNosotros">
       Somos proveedores de servicios de Internet, La Plata Virtual, le ofrecemos internet de banda ancha de conexiones inalámbricas, le ofrecemos el siguiente servicio:
  De 3 a 4 dispositivos, (televisores, computadores, celulares) conectados viendo video a la vez, mas otros usando mensajería, navegación, etc
      </p>
+
   
-<br>
-  
-<br>
+</div>
       <!-- <div class="images-row" aria-hidden="true" style="margin-top:12px">
         <img src="img-nosotros-1.jpg" alt="nosotros">
         <img src="img-nosotros-2.jpg" alt="nosotros">
@@ -510,31 +616,17 @@
 
     <!-- Sección Contactos -->
     <section id="contactos" class="section-card" aria-labelledby="contactos-title">
+
+      <img class="imgPage2" src="./img3.png" alt="imagen de personas usando el celular">
         
         <div class="column">
-            <img width="45" height="45" src="./logo2.png" class="attachment-full size-full" alt="" decoding="async">
- <h2 id="contactos-title">Contactos</h2>
-</div>
-     
-
-      <div style="display:flex;gap:18px;flex-wrap:wrap">
-        <div style="flex:1;min-width:260px">
-          <div class="contact-block">
-            <strong>Querés contactarnos?</strong><br>
-            <div style="margin-top:8px">
-              <div>(11) 7166 5567</div>
-              <div>info@laplatavirtual.com.ar</div>
-              <div style="margin-top:8px">Carlos Pellegrini 887. Piso 4<br>CABA. Buenos Aires</div>
-              <div style="margin-top:8px"><strong>También encontranos en:</strong><br>
-                Capitán Sarmiento, Almirante Brown, Florencio Varela y Chascomús.
-              </div>
-            </div>
-          </div>
+            <img width="90" height="90" src="./logo2.png" class="attachment-full size-full" alt="" decoding="async">
+        <h2 id="contactos-title">Contactos</h2>
         </div>
-
+      
         <div style="flex:1;min-width:320px">
           <!-- Formulario: editá el action por el endpoint que uses para enviar por mail -->
-          <form class="contact-form" action="https://example.com/tu-endpoint-de-form" method="post">
+          <form class="contact-form" id="contactForm">
             <div>
               <label for="nombre">Nombre completo</label>
               <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
@@ -564,8 +656,8 @@
               <label for="plan_interes">Plan de interés</label>
               <select id="plan_interes" name="plan_interes">
                 <option value="">-- Elegí --</option>
-                <option value="basico">Plan Básico</option>
-                <option value="avanzado">Plan Avanzado</option>
+                <option value="Servicio de internet">Servicio de internet</option>
+                <option value="Internet + servicio de Streaming">internet + servicio de Streaming</option>
                 <option value="otro">Otro</option>
               </select>
             </div>
@@ -595,14 +687,14 @@
   <footer>
     <div class="footer-card">
       <strong>Querés contactarnos?</strong><br><br>
-      (11) 7166 5567<br>
+      +549 11-7232-9570<br>
       info@laplatavirtual.com.ar<br><br>
 
-      Carlos Pellegrini 887. Piso 4<br>
-      CABA. Buenos Aires<br><br>
+      Calle 8 n°887 entre calle 64 y calle 63. Piso 3 (si tienen oficinas)<br>
+      La Plata. Buenos Aires<br><br>
 
       <strong>También encontranos en:</strong><br>
-      Capitán Sarmiento, Almirante Brown, Florencio Varela y Chascomús.
+      Capitán Sarmiento, Almirante Brown, Florencio Varela y La plata.
     </div>
   </footer>
 
@@ -617,25 +709,51 @@
   </div>
 
   <script>
-    // Toggle plan details
-    document.querySelectorAll('.toggle-details').forEach(btn=>{
-      btn.addEventListener('click', e=>{
-        const id = btn.dataset.target;
-        const el = document.getElementById(id);
-        const expanded = btn.getAttribute('aria-expanded') === 'true';
-        if(!el) return;
-        if(expanded){
-          el.style.display = 'none';
-          el.setAttribute('aria-hidden','true');
-          btn.setAttribute('aria-expanded','false');
-        } else {
-          el.style.display = 'block';
-          el.setAttribute('aria-hidden','false');
-          btn.setAttribute('aria-expanded','true');
-        }
-      });
-    });
 
+//oyente btn servicio de internet
+
+//oyente btn servicio de internet + streaming
+
+//oyente formulario
+document.getElementById("contactForm").addEventListener("submit", function(e) {
+    e.preventDefault(); // Evita que recargue la página
+
+    // Captura de datos
+    const nombre = document.getElementById("nombre").value;
+    const empresa = document.getElementById("empresa").value;
+    const email = document.getElementById("email").value;
+    const telefono = document.getElementById("telefono").value;
+    const localidad = document.getElementById("localidad").value;
+    const plan = document.getElementById("plan_interes").value;
+    const mensaje = document.getElementById("mensaje").value;
+
+    // Crear mensaje de WhatsApp
+    let texto = 
+`Hola! Quiero hacer una consulta:
+
+👤 Nombre: ${nombre}
+🏢 Empresa: ${empresa || 'No especificada'}
+📧 Email: ${email}
+📱 Teléfono: ${telefono}
+📍 Localidad: ${localidad}
+📦 Plan de interés: ${plan || 'No seleccionado'}
+
+📝 Mensaje:
+${mensaje}
+
+Gracias!`;
+
+    // Codificar mensaje para URL
+    texto = encodeURIComponent(texto);
+
+    // Número de destino (EDITAR)
+    const numero = "5491172329570";
+
+    // Abrir WhatsApp
+    const url = `https://wa.me/${numero}?text=${texto}`;
+    window.open(url, "_blank");
+});
+ 
     // Smooth scrolling for header links
     document.querySelectorAll('nav.main-nav a').forEach(a=>{
       a.addEventListener('click', e=>{
