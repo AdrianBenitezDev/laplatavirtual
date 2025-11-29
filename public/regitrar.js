@@ -8,7 +8,8 @@ if (location.hostname === "laplatavirtual.com.ar"||
     userID = Math.floor(10000000 + Math.random() * 90000000) + "_lpv";
     localStorage.setItem("lpvID", userID);
   }
-
+//https://script.google.com/macros/s/AKfycbxSXhwvoTeYPd2Ju74Fibufr6_lrtfxzpYqFw12QVBuigKwjJJ2vjmgGdjScCmVaU2MWQ/exec
+//https://script.google.com/macros/s/AKfycbxSXhwvoTeYPd2Ju74Fibufr6_lrtfxzpYqFw12QVBuigKwjJJ2vjmgGdjScCmVaU2MWQ/exec
   fetch("https://script.google.com/macros/s/AKfycbxSXhwvoTeYPd2Ju74Fibufr6_lrtfxzpYqFw12QVBuigKwjJJ2vjmgGdjScCmVaU2MWQ/exec", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
