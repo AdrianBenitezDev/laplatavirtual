@@ -18,4 +18,6 @@ if (location.hostname === "laplatavirtual.com.ar"||
     .then(data => console.log(data))
     .catch(err => console.error(err));
 
+}else{
+  console.log("se encuentra en version desarrollador")
 }
