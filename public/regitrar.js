@@ -1,3 +1,6 @@
+const host = location.hostname.replace("www.", "");
+
+
 if (host === "laplatavirtual.com.ar") {
 
   let userID = localStorage.getItem("lpvID");
