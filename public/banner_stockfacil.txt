@@ -1,4 +1,4 @@
-Publicidad Stock Facil (arriba del footer, 1 imagen por vez, cambio cada 5 segundos)
+Publicidad Stock Facil (arriba del footer, 1 imagen por vez, cambio cada 10 segundos)
 
 1) HTML (pegar justo antes del <footer>)
 
@@ -158,7 +158,7 @@ if(stockfacilModal && stockfacilImage){
     stockfacilTimer = setInterval(()=>{
       const nextIndex = (currentStockfacilBanner + 1) % stockfacilBanners.length;
       setStockfacilBanner(nextIndex);
-    }, 5000);
+    }, 10000);
   };
 
   stockfacilModal.setAttribute('aria-hidden', 'false');

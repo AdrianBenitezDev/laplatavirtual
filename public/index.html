@@ -916,7 +916,7 @@ Gracias!`;
       }
     });
 
-    // Publicidad arriba del footer con rotacion automatica (cada 5 segundos)
+    // Publicidad arriba del footer con rotacion automatica (cada 10 segundos)
     const stockfacilModal = document.getElementById('stockfacilModal');
     const stockfacilImage = document.getElementById('stockfacilModalImage');
     const stockfacilPrev = document.getElementById('stockfacilPrev');
@@ -953,7 +953,7 @@ Gracias!`;
         stockfacilTimer = setInterval(()=>{
           const nextIndex = (currentStockfacilBanner + 1) % stockfacilBanners.length;
           setStockfacilBanner(nextIndex);
-        }, 5000);
+        }, 10000);
       };
 
       stockfacilModal.setAttribute('aria-hidden', 'false');
